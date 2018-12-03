@@ -1,0 +1,45 @@
+{
+  "name": "react-juicer",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./lib/index.js",
+  "scripts": {
+    "install-peers": "node -e \"const peers = Object.entries(require('./package.json').peerDependencies || {}).map(d => d.join('@')).join(' '); if (peers.length) process.stdout.write('yarn add -P --no-lockfile ' + String(peers));\" | sh",
+    "examples": "cd examples && yarn && yarn run start",
+    "clean": "rm -rf ./lib",
+    "build": "yarn run clean && tsc"
+  },
+  "dependencies": {
+    "polished": "^2.3.1",
+    "react-bottom-scroll-listener": "^1.3.0",
+    "react-modal": "^3.6.1",
+    "styled-media-query": "^2.0.2",
+    "tristicons": "https://github.com/mango-chutney/tristicons/archive/7439a425b85f18f30b9cc447bbb91b7ddb23bc60.tar.gz"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.118",
+    "@types/node": "10.12.10",
+    "@types/react": "^16.0.0",
+    "@types/react-dom": "^16.0.0",
+    "@types/react-modal": "^3.2.1",
+    "@types/styled-components": "^4.1.1",
+    "prettier": "^1.15.3",
+    "typescript": "3.1.6"
+  },
+  "peerDependencies": {
+    "lodash": "^4.0.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "styled-components": "^4.0.0"
+  },
+  "prettier": {
+    "trailingComma": "all",
+    "singleQuote": true
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
