@@ -2,13 +2,7 @@
 
 A feed of social media image posts using React and Juicer API.
 
-## Install
-
-npm publish soon
-
 ## Usage
-
-TBD:
 
 ```
 yarn add react-juicer
