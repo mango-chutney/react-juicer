@@ -10,9 +10,10 @@ jobs:
             - v1-dependencies-{{ checksum "package.json" }}
             - v1-dependencies-
       - run: yarn install
-      - run: yarn run install-peers
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+      - run: yarn run install-peers
+      - run: yarn run build
       - run: yarn run semantic-release

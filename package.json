@@ -7,6 +7,9 @@
     "type": "git",
     "url": "https://github.com/mango-chutney/react-juicer"
   },
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "install-peers": "node -e \"const peers = Object.entries(require('./package.json').peerDependencies || {}).map(d => d.join('@')).join(' '); if (peers.length) process.stdout.write('yarn add -P --no-lockfile ' + String(peers));\" | sh",
     "examples": "cd examples && yarn && yarn run start",
