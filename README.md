@@ -88,9 +88,17 @@ const media = generateMedia({
 });
 ```
 
-## Examples
+## Debugging & Examples
 
-Create a react server using react scripts to display an example
+Build react-juicer
+
+```
+yarn && yarn run install-peers
+
+yarn run build
+```
+
+Create a react server using react scripts to display example
 
 ```
 yarn run examples
