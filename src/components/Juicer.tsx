@@ -1,6 +1,8 @@
 import * as React from 'react';
 import {
   AnchorButton,
+  Heart,
+  Comments,
   Button,
   ChevronLeft,
   ChevronRight,
@@ -151,7 +153,6 @@ class Juicer extends React.Component<Props, State> {
     )
       .then(response => response.json())
       .then(response => {
-        console.log(response.posts.items);
         this.setState({
           juicerFeed:
             juicerFeed &&
@@ -249,8 +250,13 @@ class Juicer extends React.Component<Props, State> {
                 >
                   <img src={image} alt="" />
                   <FeedItemHover>
-                    <span>{comment_count}</span>
-                    <span>{like_count}</span>
+                    <div>
+                      <Comments />
+                      {comment_count}
+                    </div>
+                    <div>
+                      <Heart /> {like_count}
+                    </div>
                   </FeedItemHover>
                 </FeedItem>
               ),

@@ -74,6 +74,7 @@ export const ModalNext = styled.button`
   align-items: center;
   background: transparent;
   border: 0;
+  cursor: pointer
   display: flex;
   height: 100%;
   justify-content: flex-end;
@@ -92,6 +93,7 @@ export const ModalPrevious = styled.button`
   align-items: center;
   background: transparent;
   border: 0;
+  cursor: pointer
   display: flex;
   height: 100%;
   justify-content: flex-start;
@@ -179,8 +181,8 @@ export const ModalClose = styled.button`
   top: 0.75rem;
   z-index: 9999;
 
-  > *:last-child {
-    margin-left: auto;
+  i {
+    display: block;
   }
 `;
 
