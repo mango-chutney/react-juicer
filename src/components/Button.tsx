@@ -11,6 +11,7 @@ const LoadMoreButton = styled.div`
   margin: ${({ theme }) => get(theme, 'button.margin')};
   padding: ${({ theme }) => get(theme, 'button.padding')};
   text-align: center;
+  text-decoration: none;
   transition: all 300ms ease;
 
   &:hover,

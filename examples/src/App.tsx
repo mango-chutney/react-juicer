@@ -3,7 +3,11 @@ import Juicer from 'react-juicer';
 
 class App extends Component {
   render() {
-    return <Juicer feedId="mangodashboard" imagesPer={18} />;
+    return (
+      <div>
+        <Juicer feedId="mangodashboard" imagesPer={18} />
+      </div>
+    );
   }
 }
 

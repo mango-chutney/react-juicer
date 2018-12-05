@@ -13,8 +13,7 @@
     "polished": "^2.3.1",
     "react-bottom-scroll-listener": "^1.3.0",
     "react-modal": "^3.6.1",
-    "styled-media-query": "^2.0.2",
-    "tristicons": "https://github.com/mango-chutney/tristicons/archive/7439a425b85f18f30b9cc447bbb91b7ddb23bc60.tar.gz"
+    "styled-media-query": "^2.0.2"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.118",

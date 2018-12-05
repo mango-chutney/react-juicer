@@ -27,4 +27,12 @@ export const defaultTheme = {
     borderRadius: rem(4),
     margin: '2rem auto',
   },
+  anchorButton: {
+    padding: '0.75rem 1.25rem',
+    color: 'white',
+    backgroundColor: 'black',
+    backgroundColorHover: 'black',
+    borderRadius: rem(4),
+    margin: '0',
+  },
 };

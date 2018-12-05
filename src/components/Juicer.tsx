@@ -1,12 +1,26 @@
 import * as React from 'react';
 import {
+  AnchorButton,
+  Button,
+  ChevronLeft,
+  ChevronRight,
+  Cross,
   FeedItem,
   FeedItemHover,
   FeedWrapper,
-  LoadMoreButton,
   LoadMoreContainer,
+  Modal,
+  ModalAvatar,
+  ModalAvatarContainer,
+  ModalButtonContainer,
+  ModalClose,
+  ModalContentContainer,
+  ModalContentWrapper,
+  ModalImageContainer,
+  ModalMessage,
+  ModalNext,
+  ModalPrevious,
 } from './index';
-import Modal from 'react-modal';
 import BottomScrollListener from 'react-bottom-scroll-listener';
 import { ThemeProvider } from 'styled-components';
 import defaultsDeep from 'lodash/defaultsDeep';
@@ -57,6 +71,8 @@ interface Props {
   feedId: string;
   imagesPer: number;
   initialLimit?: number;
+  renderFail?: () => any;
+  renderLoading?: () => any;
   theme?: any;
 }
 
@@ -185,24 +201,26 @@ class Juicer extends React.Component<Props, State> {
       afterInitialLimit,
       isOpen,
       juicerFeed,
+      loadedAll,
       loading,
       loadingMore,
-      loadedAll,
     } = this.state;
 
     const {
       disableLoadMore,
+      disableOnScroll,
       initialLimit,
       theme,
-      disableOnScroll,
+      renderLoading,
+      renderFail,
     } = this.props;
 
     if (loading) {
-      return <div>loading</div>;
+      return <div>{renderLoading ? renderLoading() : 'loading'}</div>;
     }
 
     if (!juicerFeed) {
-      return <div>could not load feed</div>;
+      return <div>{renderFail ? renderFail() : 'could not load feed'}</div>;
     }
 
     const filteredJuicer = (() =>
@@ -243,14 +261,14 @@ class Juicer extends React.Component<Props, State> {
           </FeedWrapper>
           {!disableLoadMore && !loadedAll && (
             <LoadMoreContainer>
-              <LoadMoreButton
+              <Button
                 className="button large"
                 onClick={() => {
                   this.handleLoadMore();
                 }}
               >
                 {loadingMore ? 'Loading...' : 'Load more'}
-              </LoadMoreButton>
+              </Button>
             </LoadMoreContainer>
           )}
           {activeJuice && (
@@ -259,8 +277,77 @@ class Juicer extends React.Component<Props, State> {
               onRequestClose={() =>
                 this.setState({ isOpen: false, activeIndex: undefined })
               }
+              ariaHideApp={false}
             >
-              <img src={activeJuice.image} alt="" />
+              <ModalContentWrapper>
+                <ModalImageContainer
+                  style={{ backgroundImage: `url('${activeJuice.image}')` }}
+                >
+                  <ModalPrevious
+                    type="button"
+                    onClick={() => {
+                      this.setState({
+                        activeIndex:
+                          activeIndex && activeIndex !== 0
+                            ? activeIndex - 1
+                            : 0,
+                      });
+                    }}
+                  >
+                    <ChevronLeft />
+                  </ModalPrevious>
+                  <ModalNext
+                    type="button"
+                    onClick={() => {
+                      this.setState({
+                        activeIndex:
+                          activeIndex &&
+                          activeIndex !== filteredJuicer.length - 1
+                            ? activeIndex + 1
+                            : filteredJuicer.length - 1,
+                      });
+                    }}
+                  >
+                    <ChevronRight />
+                  </ModalNext>
+                </ModalImageContainer>
+                <ModalContentContainer>
+                  <ModalAvatarContainer>
+                    <div>
+                      <ModalAvatar
+                        style={{
+                          backgroundImage: `url('${activeJuice.poster_image}')`,
+                        }}
+                      />
+                    </div>
+                    <div>{activeJuice.poster_display_name}</div>
+                  </ModalAvatarContainer>
+                  <ModalMessage>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: activeJuice.message,
+                      }}
+                    />
+                  </ModalMessage>
+                  <ModalButtonContainer>
+                    <AnchorButton
+                      href={activeJuice.full_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      View on {activeJuice.source.source}
+                    </AnchorButton>
+                  </ModalButtonContainer>
+                </ModalContentContainer>
+                <ModalClose
+                  type="button"
+                  onClick={() => {
+                    this.setState({ isOpen: false, activeIndex: undefined });
+                  }}
+                >
+                  <Cross />
+                </ModalClose>
+              </ModalContentWrapper>
             </Modal>
           )}
         </>
