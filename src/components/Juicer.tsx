@@ -51,11 +51,11 @@ interface JuicerItemProps {
   location: string;
   message: string;
   position?: string;
-  poster_display_name?: number;
+  poster_display_name?: string;
   poster_id?: number;
-  poster_image?: number;
-  poster_name: number;
-  poster_url: number;
+  poster_image?: string;
+  poster_name: string;
+  poster_url: string;
   source: {
     id: number;
     options: any;
@@ -155,6 +155,7 @@ class Juicer extends React.Component<Props, State> {
     )
       .then(response => response.json())
       .then(response => {
+        console.log(response.posts.items);
         this.setState({
           juicerFeed:
             juicerFeed &&
@@ -333,7 +334,12 @@ class Juicer extends React.Component<Props, State> {
                         }}
                       />
                     </div>
-                    <div>{activeJuice.poster_display_name}</div>
+                    <div>
+                      {activeJuice.poster_display_name &&
+                      activeJuice.poster_display_name.length
+                        ? activeJuice.poster_display_name
+                        : activeJuice.poster_name}
+                    </div>
                   </ModalAvatarContainer>
                   <ModalMessage>
                     <div

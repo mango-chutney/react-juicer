@@ -5,7 +5,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Juicer feedId="mangodashboard" imagesPer={18} />
+        <Juicer feedId="theturffarm" imagesPer={18} />
       </div>
     );
   }

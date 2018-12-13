@@ -145,6 +145,7 @@ export const ModalAvatarContainer = styled.div`
   display: flex;
   flex-flow: row;
   padding: 0 1rem;
+  margin-bottom: 1rem;
 `;
 
 export const ModalAvatar = styled.div`
