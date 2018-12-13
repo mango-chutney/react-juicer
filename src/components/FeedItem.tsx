@@ -1,34 +1,9 @@
 import styled, { css } from 'styled-components';
 import * as styles from '../styles';
-
-export const FeedItemHover = styled.div`
-  align-items: center;
-  background: #00000055;
-  color: #ffffff;
-  display: none;
-  height: 100%;
-  justify-content: center;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
-
-  i {
-    margin-right: 0.25rem;
-  }
-
-  > div {
-    align-items: center;
-    display: inline-flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    margin-right: 0.5rem;
-  }
-`;
+import { FeedItemHover } from './index';
 
 const FeedItem = styled.div`
-  background-position: center;
-  background-size: cover;
+  display: flex;
   flex: 0 0 auto;
   margin: 0;
   max-width: ${100 / 2}%;
@@ -50,30 +25,13 @@ const FeedItem = styled.div`
       )};
     `};
 
-  &::before {
-    content: '';
-    display: block;
-    padding-bottom: 100%;
-  }
-
   &:active,
   &:hover {
     ${FeedItemHover} {
       display: flex;
     }
   }
-
-  img {
-    display: inline-block;
-    height: 0;
-    opacity: 0;
-    width: 100%;
-  }
 `;
-
-FeedItemHover.defaultProps = {
-  theme: styles.defaultTheme,
-};
 
 FeedItem.defaultProps = {
   theme: styles.defaultTheme,

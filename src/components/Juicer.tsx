@@ -1,15 +1,17 @@
 import * as React from 'react';
 import {
   AnchorButton,
-  Heart,
-  Comments,
   Button,
   ChevronLeft,
   ChevronRight,
+  Comments,
   Cross,
   FeedItem,
+  FeedItemBackgroundImage,
   FeedItemHover,
+  FeedItemImageContainer,
   FeedWrapper,
+  Heart,
   LoadMoreContainer,
   Modal,
   ModalAvatar,
@@ -243,21 +245,26 @@ class Juicer extends React.Component<Props, State> {
               ({ comment_count, id, image, like_count }, index) => (
                 <FeedItem
                   key={id}
-                  style={{ backgroundImage: `url(${image})` }}
                   onClick={() =>
                     this.setState({ isOpen: true, activeIndex: index })
                   }
                 >
-                  <img src={image} alt="" />
-                  <FeedItemHover>
-                    <div>
-                      <Comments />
-                      {comment_count}
-                    </div>
-                    <div>
-                      <Heart /> {like_count}
-                    </div>
-                  </FeedItemHover>
+                  <FeedItemBackgroundImage
+                    style={{ backgroundImage: `url(${image})` }}
+                  >
+                    <FeedItemImageContainer>
+                      <img src={image} alt="" />
+                    </FeedItemImageContainer>
+                    <FeedItemHover>
+                      <div>
+                        <Comments />
+                        {comment_count}
+                      </div>
+                      <div>
+                        <Heart /> {like_count}
+                      </div>
+                    </FeedItemHover>
+                  </FeedItemBackgroundImage>
                 </FeedItem>
               ),
             )}
