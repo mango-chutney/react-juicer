@@ -32,9 +32,6 @@ const JuicerFeed = () => (
 | **renderLoading**   |     `Function`      |                            | Optionally override component that displays when loading              |
 | **theme**           |      `Object`       | `defaultTheme (see below)` | Optionally a theme object to style feed                               |
 
-renderFail?: () => any;
-renderLoading?: () => any;
-
 ## Theme
 
 A theme object can be passed to modify the default theme below
