@@ -124,6 +124,8 @@ export const ModalImageContainer = styled.div`
   &:active {
     ${ModalNext},
     ${ModalPrevious} {
+      background: none;
+      border: 0;
       opacity: 0.75;
     }
   }
