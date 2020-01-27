@@ -201,7 +201,8 @@ class Juicer extends React.Component<Props, State> {
 
   render() {
     const {
-      activeIndex,
+      
+      dex,
       afterInitialLimit,
       isOpen,
       juicerFeed,
@@ -235,8 +236,9 @@ class Juicer extends React.Component<Props, State> {
             afterInitialLimit || !initialLimit || index < initialLimit,
         ))();
 
-    const activeJuice = (() =>
-      if(activeIndex > -1) { return filteredJuicer[activeIndex]} else {return undefined})();
+    const activeJuice = (() => {
+      if(activeIndex > -1) { return filteredJuicer[activeIndex]} else {return undefined}
+    })();
 
     return (
       <ThemeProvider theme={defaultsDeep({ ...theme }, styles.defaultTheme)}>
